@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HorizontalListView: View {
-    var header: String
+    var header =  "Categories"
     let categories  = [
         Category(name: "Salad" , image: "salad"),
         Category(name: "home made" , image: "water"),
@@ -19,6 +19,13 @@ struct HorizontalListView: View {
     
     var body: some View {
         VStack(alignment:  .leading, spacing: 10) {
+            Text(header)
+                .font(.title3)
+                .bold()
+                .foregroundColor(Color(hex: "#f28a4a"))
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.bottom, 15)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 12) {
                     ForEach(categories) {

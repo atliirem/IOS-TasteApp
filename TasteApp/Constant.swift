@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Constant {
     static let homeString = "Home"
+    
     static let profileString = "Profile"
     static let myList = "My List"
     

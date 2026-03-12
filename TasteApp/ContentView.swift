@@ -14,7 +14,7 @@ struct ContentView: View {
                 HomeView()
             }
             Tab(Constant.myList, systemImage: Constant.myListIconString){
-                MyListView()
+               VerticalListView()
             }
             Tab(Constant.profileString, systemImage: Constant.profileIconString){
                 ProfileView()
