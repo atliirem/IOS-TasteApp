@@ -9,17 +9,7 @@ import SwiftUI
 
 struct VerticalListView: View {
     var header = "Popular Meals"
-    let meal = [
-        Meal(name: "Pizza", image: "pizza", category: "fast food"),
-        Meal(name: "Ev yemeği ", image: "home", category: "home made"),
-        Meal(name: "Salata", image: "salata", category: "salad"),
-        Meal(name: "köfte", image: "water", category: "home made"),
-        Meal(name: "Salata", image: "salata", category: "salad"),
-        Meal(name: "köfte", image: "water", category: "home made"),
-        Meal(name: "Salata", image: "salata", category: "salad"),
-        Meal(name: "köfte", image: "water", category: "home made"),
-        
-    ]
+    let meals: [Meal]
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             ScrollView(.vertical, showsIndicators: false){
@@ -30,16 +20,15 @@ struct VerticalListView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     
                 LazyVStack{
-                    ForEach(meal){
-                        
+                    ForEach (meals) {
                         meal in
                         MealCard(meal: meal){
                             print(meal.name)
                         }
                     }
                     
-                    .padding(.vertical)
-                    .padding(.horizontal)
+                    .padding(7)
+                
                 }
             }
         }
@@ -47,5 +36,12 @@ struct VerticalListView: View {
 }
 
 #Preview {
-    VerticalListView()
+    VerticalListView(
+           header: "Meals",
+           meals: [
+               Meal(name: "Pizza", image: "pizza", category: "Fast Food"),
+               Meal(name: "Salata", image: "salata", category: "Salad"),
+               Meal(name: "Burger", image: "burger", category: "Fast Food")
+           ]
+       )
 }

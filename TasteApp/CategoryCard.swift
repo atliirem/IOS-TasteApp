@@ -1,32 +1,28 @@
 import SwiftUI
-
 struct CategoryCard: View {
     
     let category: Category
+    let isSelected: Bool
     var onTap: () -> Void
     
     var body: some View {
-        
-        VStack(spacing: 0) {
-            
+        VStack(spacing: 4) {
             Image(category.image)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 70, height: 70)
+                .frame(width: 60, height: 60)
                 .clipShape(Circle())
             
-//            Image(systemName:  "carrot.fill" )
-//                .frame(width: 40, height:  40)
-//            //    .padding(.bottom, 20)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 20)
-//                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-//                )
-                 
             Text(category.name)
-                .font(.caption)
+                .font(.system(size: 12))
         }
-        .frame(width: 60)
+        .frame(width: 75)
+        .padding(.vertical, 8)
+        .background(isSelected ? Color.orange.opacity(0.12) : Color.clear)
+        .overlay(
+            RoundedRectangle(cornerRadius: 13)
+                .stroke(isSelected ? Color.black : Color.clear, lineWidth: isSelected ? 2 : 0)
+        )
         .onTapGesture {
             onTap()
         }

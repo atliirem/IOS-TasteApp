@@ -9,12 +9,21 @@ import SwiftUI
 
 struct HorizontalListView: View {
     var header =  "Categories"
+    var selectedCategory:  String?
+    
     let categories  = [
+        
         Category(name: "Salad" , image: "salad"),
-        Category(name: "home made" , image: "water"),
-        Category(name: "fast food" , image: "fastfood"),
-        Category(name: "dessert" , image: "dessert"),
+        Category(name: "Home Made" , image: "water"),
+        Category(name: "Fast Food" , image: "fastfood"),
+        Category(name: "Dessert" , image: "dessert"),
+        Category(name: "Salad" , image: "salad"),
+        Category(name: "Home Made" , image: "water"),
+        Category(name: "Fast Food" , image: "fastfood"),
+        Category(name: "Dessert" , image: "dessert"),
+        
     ]
+    var onCategorySelected : (Category) -> Void
     
     
     var body: some View {
@@ -25,13 +34,16 @@ struct HorizontalListView: View {
                 .foregroundColor(Color(hex: "#f28a4a"))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 15)
+                
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 12) {
-                    ForEach(categories) {
-                        category in
-                        CategoryCard(category: category){
-                            print("Selected Category: " , category.name)
+                    ForEach(categories) {  category in
+                        CategoryCard(
+                            category: category,
+                            isSelected: selectedCategory == category.name
+                        ) {
+                            onCategorySelected(category)
                         }
                         
                     }

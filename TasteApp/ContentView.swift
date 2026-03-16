@@ -14,7 +14,7 @@ struct ContentView: View {
                 HomeView()
             }
             Tab(Constant.myList, systemImage: Constant.myListIconString){
-               VerticalListView()
+               MyListView()
             }
             Tab(Constant.profileString, systemImage: Constant.profileIconString){
                 ProfileView()
@@ -22,7 +22,6 @@ struct ContentView: View {
             }
     }
 }
-
 #Preview {
     ContentView()
 }
