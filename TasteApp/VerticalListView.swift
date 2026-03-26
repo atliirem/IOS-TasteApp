@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct VerticalListView: View {
-    var header = "Popular Meals"
+    var header = "Favorite Meals"
     let meals: [Meal]
+    
+    let favoriteIDs: Set<String>
+    var onFavoriteToggle: (Meal) -> Void
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             ScrollView(.vertical, showsIndicators: false){
@@ -22,8 +25,16 @@ struct VerticalListView: View {
                 LazyVStack{
                     ForEach (meals) {
                         meal in
-                        MealCard(meal: meal){
-                            print(meal.name)
+                        NavigationLink(
+                            destination: MealDetailView(
+                                meal: meal,
+                                isFavorite: favoriteIDs.contains(meal.id),
+                                onFavoriteToggle: {
+                                    onFavoriteToggle(meal)
+                                }
+                            )
+                        ) {
+                            MealCard(meal: meal)
                         }
                     }
                     
@@ -36,12 +47,22 @@ struct VerticalListView: View {
 }
 
 #Preview {
-    VerticalListView(
-           header: "Meals",
-           meals: [
-               Meal(name: "Pizza", image: "pizza", category: "Fast Food"),
-               Meal(name: "Salata", image: "salata", category: "Salad"),
-               Meal(name: "Burger", image: "burger", category: "Fast Food")
-           ]
-       )
+    NavigationStack {
+        VerticalListView(
+            header: "Popular Meals",
+            meals: [
+                Meal(
+                    id: "1",
+                    name: "Pizza",
+                    image: "https://via.placeholder.com/150",
+                    category: "Fast Food",
+                    instructions: "Bake it",
+                    area: "Italian",
+                    tags: "Cheese"
+                )
+            ],
+            favoriteIDs: [],
+            onFavoriteToggle: { _ in }
+        )
+    }
 }

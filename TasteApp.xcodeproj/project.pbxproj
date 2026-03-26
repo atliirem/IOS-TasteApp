@@ -6,13 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9841F0362F713D9C0013B094 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9841F0352F713D9C0013B094 /* FirebaseAuth */; };
+		9841F0382F713DA70013B094 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9841F0372F713DA70013B094 /* FirebaseCore */; };
+		9845A3FA2F72D04F00D4BBDE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9845A3F92F72D04F00D4BBDE /* FirebaseStorage */; };
+		988D38AF2F72B2F500FB86C2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 988D38AE2F72B2F500FB86C2 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		982897292F600F0400465976 /* TasteApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TasteApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		98335BA42F683EF600FE9013 /* Exceptions for "TasteApp" folder in "TasteApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 982897282F600F0400465976 /* TasteApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9828972B2F600F0400465976 /* TasteApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				98335BA42F683EF600FE9013 /* Exceptions for "TasteApp" folder in "TasteApp" target */,
+			);
 			path = TasteApp;
 			sourceTree = "<group>";
 		};
@@ -23,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9841F0382F713DA70013B094 /* FirebaseCore in Frameworks */,
+				9845A3FA2F72D04F00D4BBDE /* FirebaseStorage in Frameworks */,
+				9841F0362F713D9C0013B094 /* FirebaseAuth in Frameworks */,
+				988D38AF2F72B2F500FB86C2 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				9828972B2F600F0400465976 /* TasteApp */,
+				9841F0342F713D9C0013B094 /* Frameworks */,
 				9828972A2F600F0400465976 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +68,13 @@
 				982897292F600F0400465976 /* TasteApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9841F0342F713D9C0013B094 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,6 +97,10 @@
 			);
 			name = TasteApp;
 			packageProductDependencies = (
+				9841F0352F713D9C0013B094 /* FirebaseAuth */,
+				9841F0372F713DA70013B094 /* FirebaseCore */,
+				988D38AE2F72B2F500FB86C2 /* FirebaseFirestore */,
+				9845A3F92F72D04F00D4BBDE /* FirebaseStorage */,
 			);
 			productName = TasteApp;
 			productReference = 982897292F600F0400465976 /* TasteApp.app */;
@@ -94,6 +130,9 @@
 			);
 			mainGroup = 982897202F600F0400465976;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9841F02D2F712B680013B094 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9828972A2F600F0400465976 /* Products */;
 			projectDirPath = "";
@@ -256,6 +295,7 @@
 				DEVELOPMENT_TEAM = 6NZ32FUKUD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TasteApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +328,7 @@
 				DEVELOPMENT_TEAM = 6NZ32FUKUD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TasteApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +373,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9841F02D2F712B680013B094 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9841F0352F713D9C0013B094 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9841F02D2F712B680013B094 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		9841F0372F713DA70013B094 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9841F02D2F712B680013B094 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		9845A3F92F72D04F00D4BBDE /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9841F02D2F712B680013B094 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		988D38AE2F72B2F500FB86C2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9841F02D2F712B680013B094 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 982897212F600F0400465976 /* Project object */;
 }

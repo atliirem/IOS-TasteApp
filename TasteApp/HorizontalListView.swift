@@ -13,14 +13,14 @@ struct HorizontalListView: View {
     
     let categories  = [
         
-        Category(name: "Salad" , image: "salad"),
-        Category(name: "Home Made" , image: "water"),
-        Category(name: "Fast Food" , image: "fastfood"),
-        Category(name: "Dessert" , image: "dessert"),
-        Category(name: "Salad" , image: "salad"),
-        Category(name: "Home Made" , image: "water"),
-        Category(name: "Fast Food" , image: "fastfood"),
-        Category(name: "Dessert" , image: "dessert"),
+        Category(name: "Dessert" , image: "des"),
+        Category(name: "Vegetarian" , image: "vega"),
+        Category(name: "Pasta" , image: "pasta"),
+        Category(name: "Beef" , image: "beef"),
+        Category(name: "Side" , image: "side"),
+        Category(name: "Seafood" , image: "seafood"),
+        Category(name: "Chicken" , image: "chicken"),
+        Category(name: "Miscellaneous" , image: "ot"),
         
     ]
     var onCategorySelected : (Category) -> Void
@@ -33,11 +33,11 @@ struct HorizontalListView: View {
                 .bold()
                 .foregroundColor(Color(hex: "#f28a4a"))
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.bottom, 15)
+                .padding(.bottom, 10)
                 
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 12) {
+                LazyHStack(spacing: 10) {
                     ForEach(categories) {  category in
                         CategoryCard(
                             category: category,
@@ -55,3 +55,10 @@ struct HorizontalListView: View {
     }
 }
 
+#Preview {
+    HorizontalListView(
+        header: "Categories",
+        selectedCategory: "Dessert",
+        onCategorySelected: { _ in }
+    )
+}

@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct MyListView: View {
+    let meals: [Meal]
+    let favoriteIDs: Set<String>
+    var onFavoriteToggle: (Meal) -> Void
+    
+    var favoriteMeals : [Meal] {
+        meals.filter {
+            favoriteIDs.contains($0.id)
+        }
+    }
     var body: some View {
-        Text("My List")
+        NavigationStack{
+            if favoriteMeals.isEmpty {
+                Text("no favorite yet")
+                    .foregroundStyle(.gray)
+            }else{
+                VerticalListView(meals: favoriteMeals, favoriteIDs: favoriteIDs, onFavoriteToggle: { _ in} )
+            }
+        }
     }
 }
 
-#Preview {
-    MyListView()
-}

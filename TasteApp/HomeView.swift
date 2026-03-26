@@ -2,79 +2,141 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var searchText = ""
-    @State private var selectedCategory : String? = nil
+    let meals: [Meal]
+    let favoriteIDs: Set<String>
+    let isLoading: Bool
+    let errorMessage: String
+    var onFavoriteToggle: (Meal) -> Void
     
-    let foods = ["Pizza", "Burger", "Pasta", "Salad"]
-    let meal = [
-        Meal(name: "Pizza", image: "pizza", category: "Fast Food"),
-        Meal(name: "Ev yemeği ", image: "home", category: "Home Made"),
-        Meal(name: "Salata", image: "salata", category: "Salad"),
-        Meal(name: "köfte", image: "water", category: "Home Made"),
-        Meal(name: "Salata", image: "salata", category: "Salad"),
-        Meal(name: "köfte", image: "water", category: "Home Made"),
-        Meal(name: "Salata", image: "salata", category: "Salad"),
-        Meal(name: "köfte", image: "water", category: "Home Made"),
-        
-    ]
+    @State private var searchText = ""
+    @State private var selectedCategory: String? = nil
+    @State private var showCreateMeal = false
+    
+    var onCreateMealDismiss: () -> Void
+    
     var filteredMeals: [Meal] {
-        meal.filter { meal in
+        meals.filter { meal in
             let matchesSearch =
-            searchText.isEmpty || meal.name.localizedCaseInsensitiveContains(searchText) ||
-            meal.category.localizedCaseInsensitiveContains(searchText)
+                searchText.isEmpty ||
+                meal.name.localizedCaseInsensitiveContains(searchText) ||
+                meal.category.localizedCaseInsensitiveContains(searchText)
             
             let matchesCategory =
-            selectedCategory == nil ||
-            meal.category == selectedCategory
+                selectedCategory == nil ||
+                meal.category == selectedCategory
             
             return matchesSearch && matchesCategory
         }
-        
     }
-
+    
     var body: some View {
         NavigationStack {
-            ScrollView{
+            ScrollView {
                 VStack(spacing: 20) {
-                    
-                    Image("logo2")
+                    Image("last")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 180, height: 180)
-                        .padding(.top, 20)
-                     //   .border(isSelected ? Color.orange : Color.gray, width: 1)
+                        .frame(width: 280, height: 145)
+                        .padding(.top, 2)
                     
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.gray)
                         
-                        TextField("Search food", text: $searchText)
+                        TextField("Search Food", text: $searchText)
                     }
                     .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
+                    .background(Color(.clear))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray, lineWidth: 1))
                     .padding(.horizontal)
                     
-    
-                    HorizontalListView( header: "Categories"){ category in
-                        if selectedCategory == category.name{
+                    HorizontalListView(header: "Categories") { category in
+                        if selectedCategory == category.name {
                             selectedCategory = nil
-                        }else {
+                        } else {
                             selectedCategory = category.name
-        
+                        }
+                    }
+                    
+                    if isLoading {
+                        ProgressView("Loading meals...")
+                            .padding(.top, 30)
+                    } else if !errorMessage.isEmpty {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding()
+                    } else if filteredMeals.isEmpty {
+                        Text("No meals found")
+                            .foregroundColor(.gray)
+                            .padding(.top, 30)
+                    } else {
+                        VerticalListView(
+                            header: "Meals",
+                            meals: filteredMeals,
+                            favoriteIDs: favoriteIDs,
+                            onFavoriteToggle: onFavoriteToggle
+                        )
+                    }
+                }
+                .toolbar{
+                        Button {
+                            showCreateMeal = true
+                        } label: {
+                            Image(systemName: "plus")
                         }
                         
-                        
                     }
-                    VerticalListView(header: "Meals" , meals: filteredMeals)
-                    
-                    //                List(filteredFoods, id: \.self) { food in
-                    //                    Text(food)
-                    //                }
-                        .listStyle(.plain)
+                .sheet(isPresented: $showCreateMeal, onDismiss: {
+                    onCreateMealDismiss()
+                }) {
+                    CreateMealView()
                 }
             }
         }
     }
 }
 
+#Preview {
+    HomeView(
+        meals: [
+            Meal(
+                id: "1",
+                name: "Pizza",
+                image: "https://via.placeholder.com/150",
+                category: "Fast Food",
+                instructions: "Bake it",
+                area: "Italian",
+                tags: "Cheese"
+            ),
+            Meal(
+                id: "2",
+                name: "Burger",
+                image: "https://via.placeholder.com/150",
+                category: "Fast Food",
+                instructions: "Grill it",
+                area: "American",
+                tags: "Beef"
+            ),
+            Meal(
+                id: "3",
+                name: "Sushi",
+                image: "https://via.placeholder.com/150",
+                category: "Seafood",
+                instructions: "Roll it",
+                area: "Japanese",
+                tags: "Rice,Fish"
+            )
+        ],
+        favoriteIDs: ["1"],
+        isLoading: false,
+        errorMessage: "",
+        onFavoriteToggle: { meal in
+            print("Favorite toggled: \(meal.name)")
+        },
+        onCreateMealDismiss: {
+            print("Dismissed")
+        }
+    )
+}

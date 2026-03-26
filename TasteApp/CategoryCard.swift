@@ -10,13 +10,13 @@ struct CategoryCard: View {
             Image(category.image)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 60, height: 60)
-                .clipShape(Circle())
+                .frame(width: 67, height: 70)
+                .cornerRadius(20)
             
             Text(category.name)
-                .font(.system(size: 12))
+                .font(.system(size: 13.8, weight: .medium))
         }
-        .frame(width: 75)
+        .frame(width: 95)
         .padding(.vertical, 8)
         .background(isSelected ? Color.orange.opacity(0.12) : Color.clear)
         .overlay(
@@ -27,4 +27,12 @@ struct CategoryCard: View {
             onTap()
         }
     }
+}
+
+#Preview {
+    CategoryCard(
+        category: Category(name: "Beef", image: "beef"),
+        isSelected: false,
+        onTap: {}
+    )
 }
