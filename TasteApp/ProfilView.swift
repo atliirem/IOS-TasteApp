@@ -46,7 +46,7 @@ struct ProfilView: View {
                         favoriteIDs: favoriteIDs,
                         onFavoriteToggle: onFavoriteToggle
                     )) {
-                        ProfileRow(title: "Favorilerim", icon: "heart.fill")
+                        ProfileRow(title: "My Favorites", icon: "heart.fill")
                     }
                 }
                 
@@ -65,7 +65,7 @@ struct ProfilView: View {
                 }
             }
             .padding()
-            .navigationTitle("Profil")
+            .navigationTitle("Profile")
         }
     }
 }
