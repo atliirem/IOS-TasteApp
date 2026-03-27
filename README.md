@@ -56,20 +56,26 @@ TasteApp is a modern iOS application built with **SwiftUI** that allows users to
 * **UserDefaults (Local Storage)**
 
 ---
+## 📱 Screenshots
 **Home Page**
-## 📱 Screenshots<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 14 38" src="https://github.com/user-attachments/assets/dcb47442-b5f4-4e8a-bbc1-7cb9a568d2f7" />
+---------
+<img width="400" height="869" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 14 38" src="https://github.com/user-attachments/assets/dcb47442-b5f4-4e8a-bbc1-7cb9a568d2f7" />
 
-**Favorites**
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 14 43" src="https://github.com/user-attachments/assets/39e1da85-10c3-4d62-8207-716c09976730" />
+**Favorites Page**
+----------
+<img width="400" height="869" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 14 43" src="https://github.com/user-attachments/assets/39e1da85-10c3-4d62-8207-716c09976730" />
 
 **Profile Page**
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 15 08" src="https://github.com/user-attachments/assets/c8a4ee87-9ecb-4885-be88-11dafdd679d0" />
+---------
+<img width="400" height="869" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 15 08" src="https://github.com/user-attachments/assets/c8a4ee87-9ecb-4885-be88-11dafdd679d0" />
 
-**Create**
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 15 16" src="https://github.com/user-attachments/assets/c4e50bd6-af87-4b6a-9097-e63ab34ee646" />
+**Create Recipe Page**
+---------
+<img width="400" height="869" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 15 16" src="https://github.com/user-attachments/assets/c4e50bd6-af87-4b6a-9097-e63ab34ee646" />
 
-**My Recipe**
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 15 03" src="https://github.com/user-attachments/assets/f2afbb0c-534e-4ff1-bf6f-0005cd1b3c51" />
+**My Recipe Page**
+---------
+<img width="400" height="869" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-27 at 10 15 03" src="https://github.com/user-attachments/assets/f2afbb0c-534e-4ff1-bf6f-0005cd1b3c51" />
 
 
 ## 🧠 What I Learned
